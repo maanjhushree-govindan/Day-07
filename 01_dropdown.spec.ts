@@ -13,19 +13,19 @@ test(`Dropddown`, async ({page}) => {
 
     //Select Cource
     for(let i=1; i<=3; i++){
-    await page.locator("//span[contains(@class,'ui-button-icon-primary ui-icon')]").click();
-        if (i===1){
-            await page.locator("//li[@data-item-label='Playwright']").click();
-            i+1;
-        }
-        else if (i===2){
-            await page.locator("//li[@data-item-label='Selenium WebDriver']").click();
-            i+1;
-        }
-        else{
-            await page.locator("//li[@data-item-value='PostMan']").click();
-            i+1;
-        }
+        await page.locator("//span[contains(@class,'ui-button-icon-primary ui-icon')]").click();
+            if (i===1){
+                await page.locator("//li[@data-item-label='Playwright']").click();
+                i+1;
+            }
+            else if (i===2){
+                await page.locator("//li[@data-item-label='Selenium WebDriver']").click();
+                i+1;
+            }
+            else{
+                await page.locator("//li[@data-item-value='PostMan']").click();
+                i+1;
+            }
 
     }
     
@@ -71,13 +71,13 @@ test(`Dropddown`, async ({page}) => {
     //Select irrespective language
     for(let j=1; j<=2;j++){
         await page.locator("//div[@id='j_idt87:value']//label[1]").click();
-        if (j==1){
-            await page.locator("(//ul[@id='j_idt87:value_items']//li)[3]").click();
-            j++;
-        }
-        else {
-            await page.locator("(//ul[@id='j_idt87:value_items']//li)[2]").click();
-        }
+            if (j==1){
+                await page.locator("(//ul[@id='j_idt87:value_items']//li)[3]").click();
+                j++;
+            }
+            else {
+                await page.locator("(//ul[@id='j_idt87:value_items']//li)[2]").click();
+            }
     }
 
     page.close();
