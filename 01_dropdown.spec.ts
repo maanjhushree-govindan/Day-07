@@ -1,4 +1,4 @@
-import test, { chromium } from "@playwright/test";
+import test, { chromium, expect } from "@playwright/test";
 
 //using page fixtures
 test(`Dropddown`, async ({page}) => {
@@ -34,10 +34,39 @@ test(`Dropddown`, async ({page}) => {
     await page.waitForTimeout(1000);
     
     await page.locator("//label[text()='Select City']").click();
+    
+    //Assertion
+    for (let k=1; k<=3; k++){
+        if (k===1){
+            await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
+            .getByRole("option").filter({ hasText: "Chennai" })).toBeVisible();
+            await page.waitForTimeout(1000);
+            console.log(`Assert for Chennai Pass`);
+            k+1;
+            console.log(k);
+        }
+        else if(k===2){
+            await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
+            .getByRole("option").filter({ hasText: "Bengaluru" })).toBeVisible();
+            await page.waitForTimeout(1000);
+            console.log(`Assert for Bengaluru Pass`);
+            k+1; 
+            console.log(k);
+        }
+        else {
+            await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
+            .getByRole("option").filter({ hasText: "Delhi" })).toBeVisible();
+            await page.waitForTimeout(1000);
+            console.log(`Assert for Delhi Pass`);
+            k+1;
+            console.log(k);
+        }
+    }
+
     await page.locator("(//ul[@id='j_idt87:city_items']//li)[3]").click();
     await page.waitForTimeout(1000);
 
-    await page.locator("(//div[contains(@class,'ui-selectonemenu ui-widget')]//label)[3]").click();
+    await page.locator("(//div[contains(@class,'ui-selectonemenu ui-widget')]//label)[3]").click(); 
     await page.locator("//li[text()='Tamil']").click();
     await page.waitForTimeout(1000);
 
