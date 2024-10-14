@@ -41,21 +41,18 @@ test(`Dropddown`, async ({page}) => {
         if (k===1){
             await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
             .getByRole("option").filter({ hasText: "Chennai" })).toBeVisible();
-            await page.waitForTimeout(1000);
             console.log(`Assert for Chennai Pass`);
             k+1;
         }
         else if(k===2){
             await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
             .getByRole("option").filter({ hasText: "Bengaluru" })).toBeVisible();
-            await page.waitForTimeout(1000);
             console.log(`Assert for Bengaluru Pass`);
             k+1; 
         }
         else {
             await expect(page.locator("//*[@id='j_idt87:city_items']").filter({ hasText: "Select City" })
             .getByRole("option").filter({ hasText: "Delhi" })).toBeVisible();
-            await page.waitForTimeout(1000);
             console.log(`Assert for Delhi Pass`);
             k+1;
         }
@@ -71,7 +68,7 @@ test(`Dropddown`, async ({page}) => {
     //Select irrespective language
     for(let j=1; j<=2;j++){
         await page.locator("//div[@id='j_idt87:value']//label[1]").click();
-            if (j==1){
+            if (j===1){
                 await page.locator("(//ul[@id='j_idt87:value_items']//li)[3]").click();
                 j++;
             }
